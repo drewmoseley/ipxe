@@ -2,7 +2,8 @@ iPXE README File
 
 Quick start guide:
 
-   cd src
-   make
+   Edit ubuntu-install.ipxe as appropriate
+   $ make -C src EMBED=$(pwd)/ubuntu-install.ipxe
+   Follow instructions printed at end of make command to deploy the ISO or USB key.
 
 For any more detailed instructions, see http://ipxe.org

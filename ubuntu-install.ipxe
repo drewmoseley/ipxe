@@ -1,0 +1,14 @@
+#!ipxe
+#
+
+dhcp
+set base-url http://archive.ubuntu.com/ubuntu/dists/bionic-updates/main/installer-amd64/current/images/netboot/ubuntu-installer/amd64
+set ks-server http://tobago-wired.home.moseleynet.net:8099
+kernel ${base-url}/linux
+initrd ${base-url}/initrd.gz
+imgargs linux auto=true ks=${ks-server}/ks.cfg url=${ks-server}/pre.seed
+boot || 
+# If everything failed, give the user some options
+echo Boot from ${base-url} failed
+prompt --key 0x197e --timeout 2000 Press F12 to investigate || exit
+shell
